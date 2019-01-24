@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        document.getElementById('hod').className += ' active';
+    </script>
+    <style>
+        img{
+            height: 20px;
+            width: 20px;
+            margin-left: 25px;
+        }
+
+        .opt{
+            background-size: 20px !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+        .yes{
+            background: url(assets/img/yes.png);
+        }
+        .no{
+            background: url(assets/img/no.png);
+        }
+    </style>
+</head>
+<body>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Emp Code</th>
+                <th scope="col">Emp Name</th>
+                <th scope="col">Requirement</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>101</td>
+                    <td>Mark</td>
+                    <td>Laptop, Mouse</td>
+                    <td>Test Reason</td>
+                    <td>
+                        <div class="row">
+                            <a href="#" class="col-xs-1">
+                                <img src="assets/img/approve.png" alt="Approve Request" />
+                            </a>
+                            <div class="col">
+                                <div class="reject row" data-id="1">
+                                    <img src="assets/img/reject.png" alt="Reject Request" class="col-xs-2">
+                                    <div id="reason1" class="reason col" hidden>
+                                        <input class="form-control col-md-8" type="text" />
+                                        <button type="button" class="btn btn-danger">Reject</button>
+                                        <button type="button" class="cancel btn btn-success" data-id="1">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.reject').click(function(){
+                var id = $(this).data("id");
+                document.getElementById('reason' + id).hidden = false;
+            });        
+            $('.cancel').click(function(){
+                var id = $(this).data("id");
+                document.getElementById('reason' + id).hidden = true;
+            });
+        });
+    </script>
+</body>
+</html>
